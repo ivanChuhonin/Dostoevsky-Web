@@ -1,0 +1,1079 @@
+/* ==================== ШРИФТЫ ==================== */
+@import url("../vendor/fonts/fonts.css");
+
+/* ==================== ПЕРЕМЕННЫЕ ==================== */
+:root {
+  --bg-cream: #f6f1e6;
+  --bg-cream-soft: #efe7d6;
+  --paper: #fffcf5;
+
+  --maroon: #5c1a24;
+  --maroon-dark: #3e1017;
+  --maroon-soft: #7a2a36;
+
+  --gray: #716c63;
+  --gray-light: #b9b2a5;
+  --gray-faint: #e4ddcd;
+
+  --ink: #2b2420;
+
+  --gold: #c9a227;
+  --gold-soft: #e8d18f;
+
+  --font-display: "Playfair Display", "Georgia", serif;
+  --font-body: "PT Serif", "Georgia", serif;
+
+  --radius: 6px;
+  --shadow-card: 0 2px 10px rgba(62, 16, 23, 0.1);
+  --shadow-card-hover: 0 6px 18px rgba(62, 16, 23, 0.16);
+  --container-width: 1100px;
+}
+
+/* ==================== БАЗА ==================== */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--maroon);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-decoration-thickness: 2px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--maroon-dark);
+  line-height: 1.25;
+  margin: 0 0 0.5em;
+}
+
+h1 {
+  font-size: 2.4rem;
+}
+
+h2 {
+  font-size: 1.7rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ==================== ВИНЬЕТКА-РАЗДЕЛИТЕЛЬ ==================== */
+.vignette {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 28px 0;
+  color: var(--gold);
+  user-select: none;
+}
+
+.vignette::before,
+.vignette::after {
+  content: "";
+  flex: 1;
+  max-width: 140px;
+  height: 1px;
+  background: linear-gradient(to var(--grad-dir, right), transparent, var(--gray-light), transparent);
+}
+
+.vignette span {
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+}
+
+.vignette-mark {
+  display: inline-flex;
+  color: var(--gold);
+  opacity: 0.85;
+}
+
+/* ==================== АРХИТЕКТУРНЫЙ ДЕКОР (гравюры-наброски) ==================== */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero > *:not(.hero-sketch) {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-sketch {
+  position: absolute;
+  left: 50%;
+  bottom: -18px;
+  transform: translateX(-50%);
+  width: min(820px, 92%);
+  height: auto;
+  opacity: 0.16;
+  pointer-events: none;
+  z-index: 0;
+  filter: sepia(35%) saturate(140%) hue-rotate(-18deg) brightness(0.75);
+}
+
+@media (max-width: 600px) {
+  .hero-sketch {
+    opacity: 0.12;
+  }
+}
+
+/* Декоративный набросок в углу карточки/заголовка страницы */
+.page-sketch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: auto;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 0;
+  filter: sepia(35%) saturate(140%) hue-rotate(-18deg) brightness(0.75);
+}
+
+.page-head {
+  position: relative;
+  overflow: hidden;
+}
+
+.page-head > *:not(.page-sketch) {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 700px) {
+  .page-sketch {
+    width: 120px;
+    opacity: 0.14;
+  }
+}
+
+/* ==================== ХЕДЕР ==================== */
+.site-header {
+  background: var(--maroon-dark);
+  color: var(--bg-cream);
+  border-bottom: 3px solid var(--gold);
+}
+
+.site-header .header-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 24px;
+  flex-wrap: wrap;
+}
+
+.site-header .brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--bg-cream);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.site-header .brand:hover {
+  text-decoration: none;
+  color: var(--gold-soft);
+}
+
+.site-nav {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.site-nav a {
+  color: var(--bg-cream-soft);
+  font-size: 0.95rem;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  white-space: nowrap;
+  position: relative;
+}
+
+.site-nav a:hover {
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.site-nav a.active {
+  color: #fff;
+}
+
+.site-nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 3px;
+  height: 2px;
+  background: var(--gold);
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.btn-random {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold-soft);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 7px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-random:hover {
+  background: var(--gold);
+  color: var(--maroon-dark);
+}
+
+/* --- Глобальный поиск --- */
+.search-box {
+  position: relative;
+  min-width: 220px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--maroon-soft);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+}
+
+.search-box input::placeholder {
+  color: var(--bg-cream-soft);
+  opacity: 0.7;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.search-results {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--paper);
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card-hover);
+  max-height: 360px;
+  overflow-y: auto;
+  z-index: 50;
+  display: none;
+}
+
+.search-results.open {
+  display: block;
+}
+
+.search-results a {
+  display: block;
+  padding: 10px 14px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--gray-faint);
+  font-size: 0.95rem;
+}
+
+.search-results a:last-child {
+  border-bottom: none;
+}
+
+.search-results a:hover {
+  background: var(--bg-cream-soft);
+  text-decoration: none;
+}
+
+.search-results .result-category {
+  color: var(--gray);
+  font-size: 0.8rem;
+}
+
+.search-results .no-results {
+  padding: 14px;
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+/* ==================== ОСНОВНОЙ КОНТЕНТ ==================== */
+main {
+  flex: 1;
+  padding: 36px 0 64px;
+}
+
+/* ==================== ФУТЕР ==================== */
+.site-footer {
+  background: var(--maroon-dark);
+  color: var(--gray-light);
+  font-size: 0.88rem;
+  padding: 24px;
+  text-align: center;
+  border-top: 3px solid var(--gold);
+}
+
+.site-footer a {
+  color: var(--gold-soft);
+}
+
+/* ==================== HERO (главная) ==================== */
+.hero {
+  text-align: center;
+  padding: 40px 0 20px;
+}
+
+.hero .kicker {
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.98rem;
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+.hero p.lead {
+  max-width: 640px;
+  margin: 0 auto 18px;
+  color: var(--gray);
+  font-size: 1.1rem;
+}
+
+/* ==================== СТАТИСТИКА ==================== */
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin: 24px 0 44px;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat .num {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--maroon);
+  display: block;
+}
+
+.stat .label {
+  color: var(--gray);
+  font-size: 0.85rem;
+}
+
+/* ==================== КАРТОЧКИ-РАЗДЕЛЫ (главная) ==================== */
+.section-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 860px) {
+  .section-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .section-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.section-card {
+  background: var(--paper);
+  border: 1px solid var(--gray-faint);
+  border-radius: var(--radius);
+  padding: 26px 22px;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.section-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.section-card .icon {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.section-card h3 {
+  margin-bottom: 6px;
+}
+
+.section-card p {
+  color: var(--gray);
+  font-size: 0.93rem;
+  margin-bottom: 0;
+}
+
+/* ==================== ФИЛЬТРЫ (каталог/конструктор) ==================== */
+.filters-bar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--gray-faint);
+}
+
+.filter-group {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--gray-light);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.chip:hover {
+  border-color: var(--maroon-soft);
+}
+
+.chip.active {
+  background: var(--maroon);
+  color: #fff;
+  border-color: var(--maroon);
+}
+
+.chip.active::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: inline-block;
+}
+
+select.theme-select {
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--gray-light);
+  background: var(--paper);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.results-meta {
+  color: var(--gray);
+  font-size: 0.88rem;
+  margin-bottom: 18px;
+}
+
+/* ==================== СЕТКА КАРТОЧЕК МЕСТ ==================== */
+.place-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.place-card {
+  background: var(--paper);
+  border: 1px solid var(--gray-faint);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.place-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.place-card .thumb {
+  width: 100%;
+  height: 160px;
+  background: var(--bg-cream-soft) center/cover no-repeat;
+  position: relative;
+}
+
+.place-card .thumb.no-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-light);
+  font-size: 2rem;
+}
+
+.place-card .badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(62, 16, 23, 0.85);
+  color: var(--gold-soft);
+  font-size: 0.74rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+}
+
+.place-card .body {
+  padding: 14px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.place-card h3 {
+  font-size: 1.08rem;
+  margin-bottom: 6px;
+}
+
+.place-card .meta {
+  color: var(--gray);
+  font-size: 0.85rem;
+  margin-bottom: 0;
+}
+
+.place-card a.card-link {
+  position: relative;
+  display: block;
+  color: inherit;
+}
+
+.place-card a.card-link:hover {
+  text-decoration: none;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 50px 20px;
+  color: var(--gray);
+}
+
+/* ==================== ПАГИНАЦИЯ / "ПОКАЗАТЬ ЕЩЁ" ==================== */
+.load-more-row {
+  text-align: center;
+  margin-top: 28px;
+}
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--maroon);
+  background: var(--maroon);
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--maroon-dark);
+  border-color: var(--maroon-dark);
+}
+
+.btn.secondary {
+  background: transparent;
+  color: var(--maroon);
+}
+
+.btn.secondary:hover {
+  background: var(--bg-cream-soft);
+}
+
+.btn.gold {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--maroon-dark);
+  font-weight: 700;
+}
+
+.btn.gold:hover {
+  background: var(--gold-soft);
+  border-color: var(--gold-soft);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==================== СТРАНИЦА МЕСТА ==================== */
+.breadcrumbs {
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin-bottom: 18px;
+}
+
+.place-detail {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+@media (max-width: 760px) {
+  .place-detail {
+    grid-template-columns: 1fr;
+  }
+}
+
+.place-detail .main-col .kicker {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  margin-bottom: 8px;
+}
+
+.place-detail h1 {
+  margin-bottom: 10px;
+}
+
+.fact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fact-list li {
+  color: var(--gray);
+  font-size: 0.95rem;
+}
+
+.fact-list li strong {
+  color: var(--ink);
+}
+
+.lead-text {
+  font-size: 1.05rem;
+}
+
+.lead-text::first-letter {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.6em;
+  color: var(--maroon);
+  float: left;
+  line-height: 0.85;
+  padding-right: 6px;
+  padding-top: 2px;
+}
+
+blockquote.quote-block {
+  margin: 20px 0;
+  padding: 14px 20px;
+  border-left: 3px solid var(--gold);
+  background: var(--bg-cream-soft);
+  font-style: italic;
+  color: var(--maroon-dark);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.side-col .photo-frame {
+  border: 1px solid var(--gray-faint);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 18px;
+}
+
+.side-col .photo-frame img {
+  width: 100%;
+  height: auto;
+}
+
+.map-frame {
+  border: 1px solid var(--gray-faint);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.map-canvas {
+  width: 100%;
+  height: 320px;
+  background: var(--bg-cream-soft);
+}
+
+.film-link-box {
+  margin-top: 18px;
+  padding: 14px 16px;
+  background: var(--bg-cream-soft);
+  border-radius: var(--radius);
+  border: 1px solid var(--gray-faint);
+}
+
+.film-link-box a {
+  font-weight: 700;
+}
+
+/* ==================== МАРШРУТЫ: СПИСОК ==================== */
+.route-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 22px;
+}
+
+.route-card {
+  background: var(--paper);
+  border: 1px solid var(--gray-faint);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.route-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--gold);
+}
+
+.route-card .route-points-count {
+  color: var(--gold);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.route-card p {
+  color: var(--gray);
+  font-size: 0.92rem;
+  margin-bottom: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ==================== СТРАНИЦА МАРШРУТА ==================== */
+.route-header {
+  margin-bottom: 24px;
+}
+
+.route-duration {
+  display: inline-block;
+  background: var(--bg-cream-soft);
+  border: 1px solid var(--gray-faint);
+  color: var(--gray);
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  white-space: pre-line;
+  margin-top: 10px;
+}
+
+.route-map {
+  height: 420px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--gray-faint);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 32px;
+}
+
+.route-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.route-point {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 16px;
+  position: relative;
+  padding-bottom: 30px;
+}
+
+.route-point:last-child {
+  padding-bottom: 0;
+}
+
+.route-point .marker {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--maroon);
+  color: var(--gold-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 2px solid var(--gold);
+  z-index: 1;
+}
+
+.route-point .connector {
+  position: absolute;
+  top: 36px;
+  left: 17px;
+  bottom: 0;
+  width: 2px;
+  background: var(--gray-light);
+}
+
+.route-point:last-child .connector {
+  display: none;
+}
+
+.route-point .point-body {
+  background: var(--paper);
+  border: 1px solid var(--gray-faint);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+
+.route-point .point-body h3 {
+  margin-bottom: 8px;
+}
+
+.route-point .point-body .point-info {
+  color: var(--ink);
+  font-size: 0.95rem;
+  white-space: pre-line;
+}
+
+.route-point.unresolved .marker {
+  background: var(--gray-light);
+  color: var(--gray);
+  border-color: var(--gray-light);
+}
+
+/* ==================== КОНСТРУКТОР МАРШРУТА ==================== */
+.builder-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.builder-step {
+  background: var(--paper);
+  border: 1px solid var(--gray-faint);
+  border-radius: var(--radius);
+  padding: 22px;
+}
+
+.builder-step h2 {
+  font-size: 1.2rem;
+  margin-bottom: 14px;
+}
+
+.builder-step.disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.pick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.pick-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius);
+  cursor: pointer;
+  background: var(--bg-cream);
+  font-size: 0.92rem;
+  user-select: none;
+}
+
+.pick-card:hover {
+  border-color: var(--maroon-soft);
+}
+
+.pick-card.selected {
+  border-color: var(--gold);
+  background: var(--bg-cream-soft);
+  box-shadow: inset 0 0 0 1px var(--gold);
+}
+
+.pick-card .pick-index {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--gray-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  color: var(--gray);
+  flex-shrink: 0;
+}
+
+.pick-card.selected .pick-index {
+  background: var(--maroon);
+  border-color: var(--maroon);
+  color: var(--gold-soft);
+}
+
+.builder-progress {
+  color: var(--gray);
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.builder-result {
+  margin-top: 10px;
+}
+
+.builder-result .route-map {
+  height: 380px;
+  margin-bottom: 20px;
+}
+
+.selected-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.selected-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: var(--bg-cream);
+  border-radius: var(--radius);
+  border: 1px solid var(--gray-faint);
+}
+
+.selected-list .marker-sm {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--maroon);
+  color: var(--gold-soft);
+  font-size: 0.78rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ==================== УТИЛИТЫ ==================== */
+.text-center {
+  text-align: center;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 2.1rem;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  .site-header .header-inner {
+    gap: 12px;
+  }
+
+  .search-box {
+    order: 10;
+    width: 100%;
+  }
+}

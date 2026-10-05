@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Конструктор маршрута — По местам Достоевского</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="site-header"><div id="site-header"></div></header>
+
+<main>
+  <div class="container">
+    <h1>Конструктор маршрута</h1>
+    <p style="color:var(--gray)">Выберите категорию, тему и от 2 до 5 мест — маршрут и карта соберутся автоматически.</p>
+
+    <div class="builder-steps">
+      <div class="builder-step" id="step-category">
+        <h2>1. Категория</h2>
+        <div class="filter-group" id="builder-category-chips"></div>
+      </div>
+
+      <div class="builder-step disabled" id="step-theme">
+        <h2>2. Тема</h2>
+        <select class="theme-select" id="builder-theme-select"></select>
+      </div>
+
+      <div class="builder-step disabled" id="step-places">
+        <h2>3. Места (от 2 до 5)</h2>
+        <div class="builder-progress" id="builder-progress">Выбрано: 0 / 5</div>
+        <div class="pick-grid" id="builder-pick-grid"></div>
+        <div class="load-more-row">
+          <button class="btn gold" id="build-route-btn" type="button" disabled>Построить маршрут</button>
+          <button class="btn secondary" id="reset-builder-btn" type="button">Начать заново</button>
+        </div>
+      </div>
+
+      <div class="builder-step hidden" id="step-result">
+        <h2>Ваш маршрут</h2>
+        <div class="builder-result">
+          <div class="route-map" id="builder-map"></div>
+          <ul class="selected-list" id="builder-selected-list"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer"><div id="site-footer"></div></footer>
+
+<script src="assets/data/site-data.js"></script>
+<script src="assets/js/shared.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="https://mapgl.2gis.com/api/js/v1"></script>
+<script src="assets/js/map.js"></script>
+<script src="assets/js/builder.js"></script>
+</body>
+</html>

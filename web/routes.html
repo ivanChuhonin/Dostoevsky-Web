@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Готовые маршруты — По местам Достоевского</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="site-header"><div id="site-header"></div></header>
+
+<main>
+  <div class="container">
+    <div class="page-head">
+      <img class="page-sketch" src="assets/images/sketch-griffin.png" alt="" aria-hidden="true" style="width:140px;top:-10px">
+      <h1>Готовые маршруты</h1>
+      <p style="color:var(--gray)">Продуманные пешие экскурсии — от юности писателя до судеб его героев.</p>
+    </div>
+    <div class="route-grid" id="route-grid"></div>
+  </div>
+</main>
+
+<footer class="site-footer"><div id="site-footer"></div></footer>
+
+<script src="assets/data/site-data.js"></script>
+<script src="assets/js/shared.js"></script>
+<script>
+(function () {
+  var routes = Site.data.routes || [];
+  var grid = document.getElementById("route-grid");
+  if (!routes.length) {
+    grid.innerHTML = '<div class="empty-state">😔 На данный момент нет доступных готовых маршрутов.</div>';
+    return;
+  }
+  grid.innerHTML = routes.map(function (r) {
+    return (
+      '<a class="route-card" href="route.html?slug=' + encodeURIComponent(r.slug) + '" style="text-decoration:none;color:inherit">' +
+      '<div class="route-points-count">' + r.points.length + ' точек маршрута</div>' +
+      '<h3>' + Site.escapeHtml(r.name) + '</h3>' +
+      '<p>' + Site.escapeHtml(r.description) + '</p>' +
+      '</a>'
+    );
+  }).join("");
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>По местам Достоевского — Санкт-Петербург</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="site-header"><div id="site-header"></div></header>
+
+<main>
+  <div class="container">
+    <section class="hero">
+      <img class="hero-sketch" src="assets/images/sketch-bridge.png" alt="" aria-hidden="true">
+      <div class="kicker">Литературный гид</div>
+      <h1>По местам Достоевского</h1>
+      <p class="lead">
+        Прогулка по Петербургу Фёдора Михайловича — адреса из его жизни, адреса его героев,
+        музеи и памятники. Выбирайте маршрут сами или идите по готовому — с цитатами,
+        фотографиями и картой в руках.
+      </p>
+    </section>
+
+    <div class="stats-row" id="stats-row"></div>
+
+    <div class="vignette">
+      <span class="vignette-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18">
+          <polygon points="12,1 22,6.5 22,17.5 12,23 2,17.5 2,6.5" fill="none" stroke="currentColor" stroke-width="1"/>
+          <path d="M12,1 L12,12 M12,12 L22,17.5 M12,12 L2,17.5" fill="none" stroke="currentColor" stroke-width="1"/>
+        </svg>
+      </span>
+    </div>
+
+    <section class="section-cards">
+      <a class="section-card" href="catalog.html?category=life" style="text-decoration:none">
+        <span class="icon">🏠</span>
+        <h3>Места из жизни</h3>
+        <p>Квартиры, адреса, события биографии писателя в Петербурге.</p>
+      </a>
+      <a class="section-card" href="catalog.html?category=works" style="text-decoration:none">
+        <span class="icon">📚</span>
+        <h3>Места из произведений</h3>
+        <p>Дома Раскольникова, Сони, Рогожина и других героев.</p>
+      </a>
+      <a class="section-card" href="catalog.html?category=monuments" style="text-decoration:none">
+        <span class="icon">🏛</span>
+        <h3>Музеи и памятники</h3>
+        <p>Мемориальные музеи, памятники, исторические справки.</p>
+      </a>
+      <a class="section-card" href="routes.html" style="text-decoration:none">
+        <span class="icon">🗺</span>
+        <h3>Готовые маршруты</h3>
+        <p>Продуманные пешие экскурсии по нескольким точкам сразу.</p>
+      </a>
+      <a class="section-card" href="builder.html" style="text-decoration:none">
+        <span class="icon">✏️</span>
+        <h3>Свой маршрут</h3>
+        <p>Выберите тему и от 2 до 5 мест — маршрут соберётся сам.</p>
+      </a>
+      <a class="section-card" id="hero-random-card" href="#" style="text-decoration:none">
+        <span class="icon">🎲</span>
+        <h3>Случайное место</h3>
+        <p>Не знаете, с чего начать? Пусть судьба укажет адрес.</p>
+      </a>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer"><div id="site-footer"></div></footer>
+
+<script src="assets/data/site-data.js"></script>
+<script src="assets/js/shared.js"></script>
+<script>
+(function () {
+  var stats = Site.data.stats || {};
+  var rows = [
+    ["Мест из жизни", stats.life],
+    ["Из произведений", stats.works],
+    ["Музеев и памятников", stats.monuments],
+    ["Всего мест", stats.total],
+    ["Готовых маршрутов", stats.routes],
+  ];
+  document.getElementById("stats-row").innerHTML = rows.map(function (r) {
+    return '<div class="stat"><span class="num">' + (r[1] || 0) + '</span><span class="label">' + r[0] + '</span></div>';
+  }).join("");
+
+  var randomCard = document.getElementById("hero-random-card");
+  randomCard.addEventListener("click", function (e) {
+    e.preventDefault();
+    var p = Site.randomPlace();
+    if (p) window.location.href = "place.html?id=" + encodeURIComponent(p.id);
+  });
+})();
+</script>
+</body>
+</html>

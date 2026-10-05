@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Каталог мест — По местам Достоевского</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="site-header"><div id="site-header"></div></header>
+
+<main>
+  <div class="container">
+    <div class="page-head">
+      <img class="page-sketch" src="assets/images/sketch-pavilion.png" alt="" aria-hidden="true">
+      <h1>Каталог мест</h1>
+      <p style="color:var(--gray)">Выберите категорию и, при желании, тему — список подстроится.</p>
+    </div>
+
+    <div class="filters-bar">
+      <div class="filter-group" id="category-chips"></div>
+      <select class="theme-select" id="theme-select"></select>
+    </div>
+
+    <div class="results-meta" id="results-meta"></div>
+    <div class="place-grid" id="place-grid"></div>
+    <div class="load-more-row" id="load-more-row">
+      <button class="btn secondary" id="load-more-btn" type="button">Показать ещё</button>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer"><div id="site-footer"></div></footer>
+
+<script src="assets/data/site-data.js"></script>
+<script src="assets/js/shared.js"></script>
+<script src="assets/js/catalog.js"></script>
+</body>
+</html>
